@@ -2,15 +2,16 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+
+        stage('Build Docker Image') {
             steps {
-                echo "Building project..."
+                sh 'docker build -t my-app .'
             }
         }
 
-        stage('Deploy') {
+        stage('Run Container') {
             steps {
-                sh 'cp index.html /var/www/html/index.html'
+                sh 'docker run -d -p 80:80 my-app'
             }
         }
     }
