@@ -10,8 +10,9 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo "Deploying project..."
+                sh 'cp index.html /var/www/html/index.html'
             }
         }
     }
+}
 }
